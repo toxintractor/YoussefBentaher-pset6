@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bentaher.youssefbentaher_pset6.ProfileAcvivity">
+
+    <TextView
+        android:id="@+id/mailText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/stad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="stad"/>
+
+    <Button
+        android:id="@+id/stadPlus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Inloggen"/>
+
+</LinearLayout>

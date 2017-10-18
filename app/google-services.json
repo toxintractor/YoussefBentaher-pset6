@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "884847541701",
+    "firebase_url": "https://youssefbentaher-pset6.firebaseio.com",
+    "project_id": "youssefbentaher-pset6",
+    "storage_bucket": "youssefbentaher-pset6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884847541701:android:a682daa0ff229f7d",
+        "android_client_info": {
+          "package_name": "com.bentaher.youssefbentaher_pset6"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "884847541701-c3mfaaicab9jctac1ktpjt735ttuab76.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bentaher.youssefbentaher_pset6",
+            "certificate_hash": "6aa50d7cf751e90779a7023377224bdb2ff8c094"
+          }
+        },
+        {
+          "client_id": "884847541701-0ifukmifj6kfdvrh7l24oekud0vvhnpe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYRXr_MO_8u5KD7zRcUZOi7pDljp9wO_o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "884847541701-0ifukmifj6kfdvrh7l24oekud0vvhnpe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
