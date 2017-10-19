@@ -1,5 +1,12 @@
 package com.bentaher.youssefbentaher_pset6;
 
+/**
+ * Created by Youssef on 21/09/2017.
+ * In deze profielpagina kan men de weerdata van een bepaalde stad opvragen.
+ * De laatst opgezochte stad word opgeslagen in de database, hierdoor hoeft de stad niet steeds
+ * opnieuw ingevoerd te worden
+ */
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -65,7 +72,7 @@ public class ProfileAcvivity extends AppCompatActivity {
 
     }
 
-    //onlicklistener om de stad aan te vragen bij de API.
+    //onlicklistener om de stad aan te vragen bij de API. Of om uit te loggen.
     public class cityListener implements View.OnClickListener {
 
         public cityListener(){
@@ -75,6 +82,7 @@ public class ProfileAcvivity extends AppCompatActivity {
         public void onClick(View view) {
 
             if(view == citySearch){
+                //De stad in de database stoppen.
                 String cityName = city.getText().toString();
                 myRef.child(user.getUid()).setValue(cityName);
 
@@ -107,7 +115,7 @@ public class ProfileAcvivity extends AppCompatActivity {
 
         }
     }
-
+    //Methode om jouw laatstgekozen stad uit de database te halen en te gebruiken.
     public  void getCity(){
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
