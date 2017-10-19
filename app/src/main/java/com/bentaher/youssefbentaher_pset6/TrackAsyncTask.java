@@ -1,7 +1,10 @@
 package com.bentaher.youssefbentaher_pset6;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -9,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -18,9 +22,9 @@ import java.util.ArrayList;
 public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
 
     Context context;
-    ForecastActivity ForecastAct;
+    ProfileAcvivity ForecastAct;
 
-    public TrackAsyncTask(ForecastActivity main){
+    public TrackAsyncTask(ProfileAcvivity main){
         this.ForecastAct = main;
         this.context = this.ForecastAct.getApplicationContext();
     }
@@ -42,6 +46,8 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
         super.onPostExecute(result);
         Log.i("ide", result);
 
+        ArrayList<Weer> weer = new ArrayList<>();
+
         JSONObject weatherNext = new JSONObject();
         JSONArray weatherArr = new JSONArray();
         try {
@@ -55,7 +61,7 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
             e.printStackTrace();
         }
 
-        ArrayList<Weer> weer = new ArrayList<Weer>();
+
         for (int i = 0; i < 9; i++) {
             String tijd, algemeen, temp, luchtdr, luchtv, winds, rain;
             try {
@@ -81,9 +87,13 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
             }
         }
 
-        for (Weer woeroe: weer) {
-            Log.i("regen: ", woeroe.getTemperatuur());
-        }
+
+        Intent jumppage = new Intent(context, WeatherListActivity.class);
+        jumppage.putExtra("extra", weer);
+        context.startActivity(jumppage);
+
+
+
 
 
     }

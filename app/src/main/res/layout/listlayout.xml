@@ -49,7 +49,21 @@
             android:textSize="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Algemeen"/>
+            android:text="Luchtvochtigheid"/>
+
+        <TextView
+            android:id="@+id/snelheidText"
+            android:textSize="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Windsnelheid"/>
+
+        <TextView
+            android:id="@+id/regenText"
+            android:textSize="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Neerslag"/>
 
     </LinearLayout>
 

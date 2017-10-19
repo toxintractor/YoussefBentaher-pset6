@@ -18,6 +18,7 @@ public class ProfileAcvivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference myRef;
+    FirebaseUser user;
 
     TextView mailAdres;
     EditText city;
@@ -32,13 +33,13 @@ public class ProfileAcvivity extends AppCompatActivity {
         citySearch = (Button) findViewById(R.id.stadPlus);
 
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
+        user = mAuth.getCurrentUser();
         mailAdres.setText(user.getEmail());
         getSignedIn();
 
         myRef = FirebaseDatabase.getInstance().getReference();
 
-
+        citySearch.setOnClickListener(new ProfileAcvivity.cityListener());
 
 
     }
@@ -52,6 +53,14 @@ public class ProfileAcvivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             city = (EditText) findViewById(R.id.stad);
+
+            String cityName = city.getText().toString();
+            myRef.child(user.getUid()).setValue(cityName);
+
+            String adam = "Amsterdam";
+
+            TrackAsyncTask asyncTask = new TrackAsyncTask(ProfileAcvivity.this);
+            asyncTask.execute(adam);
         }
     }
 

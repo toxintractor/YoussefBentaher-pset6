@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startActivity(new Intent(getApplicationContext(), ForecastActivity.class));
-
         register = (Button) findViewById(R.id.maakaccount);
         tosignin = (TextView) findViewById(R.id.inlog);
 

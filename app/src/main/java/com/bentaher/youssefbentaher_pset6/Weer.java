@@ -1,10 +1,12 @@
 package com.bentaher.youssefbentaher_pset6;
 
+import java.io.Serializable;
+
 /**
  * Created by mocro on 16/10/2017.
  */
 
-public class Weer {
+public class Weer implements Serializable{
 
     public String tijdStip;
     public String algemeen;
@@ -30,6 +32,9 @@ public class Weer {
         this.regen = regen;
     }
 
+    public String getTijdStip(){
+        return tijdStip;
+    }
     public String getAlgemeen(){
         return algemeen;
     }
