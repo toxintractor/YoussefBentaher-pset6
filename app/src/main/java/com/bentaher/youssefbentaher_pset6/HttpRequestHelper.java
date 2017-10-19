@@ -12,7 +12,9 @@ import java.net.URL;
 import java.net.URLConnection;
 
 /**
- * Created by mocro on 21/09/2017.
+ * Created by Youssef on 21/09/2017.
+ * Deze Requesthelper haalt informatie maakt connectie met de API, en zet de JSondata om
+ * in een string.
  */
 
 public class HttpRequestHelper {
@@ -20,16 +22,17 @@ public class HttpRequestHelper {
     protected static synchronized String downloadFromServer(String... params)  {
         String result = "";
         String chosenTag = params[0];
+        Log.i("stad : ", chosenTag);
 
 
         URLConnection connection = null;
         BufferedReader reader = null;
         URL url;
 
+        //Connectie met de API aanmaken en de informatie in een String zetten.
         try {
-            //url = new URL("http://api.openweathermap.org/data/2.5/weather?q=texel&appid=c5b1f6c5367cda67a8575b8fa49b4c44");
-            //url = new URL("http://api.openweathermap.org/data/2.5/forecast?q=Amsterdam&units=metric&appid=c5b1f6c5367cda67a8575b8fa49b4c44");
-            url = new URL("http://api.openweathermap.org/data/2.5/forecast?q=london&units=metric&appid=c5b1f6c5367cda67a8575b8fa49b4c44");
+
+            url = new URL("http://api.openweathermap.org/data/2.5/forecast?q="+chosenTag+"&units=metric&appid=c5b1f6c5367cda67a8575b8fa49b4c44");
 
             connection = (HttpURLConnection) url.openConnection();
             connection.connect();
@@ -41,7 +44,6 @@ public class HttpRequestHelper {
             String line;
             while((line = reader.readLine()) != null){
                 result += line;
-                Log.i("check", line);
             }
 
         } catch (MalformedURLException e) {

@@ -16,7 +16,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by mocro on 21/09/2017.
+ * Created by Youssef on 21/09/2017.
+ * Deze Asynctask haalt informatie uit de HttpRequestHelper en filter de
+ * juiste elementen uit de JSonbject en stopt het in een modelclass
  */
 
 public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
@@ -46,22 +48,24 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
         super.onPostExecute(result);
         Log.i("ide", result);
 
+        //Modelclass instantie aanmaken.
         ArrayList<Weer> weer = new ArrayList<>();
 
+        //JSONobject aanmaken en filteren.
         JSONObject weatherNext = new JSONObject();
         JSONArray weatherArr = new JSONArray();
         try {
             JSONObject weatherDataStream = new JSONObject(result);
-            //weatherNext = weatherDataStream.getJSONObject("list");
-            //weatherNext = weatherNext.getJSONObject("main");
-
             weatherArr = weatherDataStream.getJSONArray("list");
-            Log.i("value of list", String.valueOf(weatherArr.length()));
+            Log.i("value of list", String.valueOf(weatherDataStream.getString("cod")));
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
+
+        //In de forloop wordt de komende 24 uur aan weersverwachtingen uit de JSON gefilterd
+        //en de model class object aangevuld. De modelclass word in een listArray gezet.
         for (int i = 0; i < 9; i++) {
             String tijd, algemeen, temp, luchtdr, luchtv, winds, rain;
             try {
@@ -72,12 +76,19 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
                 luchtdr = String.valueOf(weatherArr.getJSONObject(i).getJSONObject("main").getString("pressure"));
                 luchtv = String.valueOf(weatherArr.getJSONObject(i).getJSONObject("main").getString("humidity"));
                 winds = String.valueOf(weatherArr.getJSONObject(i).getJSONObject("wind").getString("speed"));
-                if(weatherArr.getJSONObject(i).getJSONObject("rain").length() == 0){
+                if(!weatherArr.getJSONObject(i).has("rain")){
                     rain = "0.00";
                 }
                 else{
-                    rain = String.valueOf(weatherArr.getJSONObject(i).getJSONObject("rain").getString("3h"));
+                    if(weatherArr.getJSONObject(i).getJSONObject("rain").length() == 0){
+                        rain = "0.00";
+                    }
+
+                    else{
+                        rain = String.valueOf(weatherArr.getJSONObject(i).getJSONObject("rain").getString("3h"));
+                    }
                 }
+
                 Log.i("value of list", String.valueOf(weatherArr.getJSONObject(i).getString("dt_txt")));
 
                 Weer weren = new Weer(tijd, algemeen, temp, luchtdr, luchtv, winds, rain);
@@ -87,14 +98,10 @@ public class TrackAsyncTask extends AsyncTask<String, Integer, String> {
             }
         }
 
-
+        //De Arraylist word meegegeven aan de listActivity.
         Intent jumppage = new Intent(context, WeatherListActivity.class);
         jumppage.putExtra("extra", weer);
         context.startActivity(jumppage);
-
-
-
-
 
     }
 }

@@ -3,11 +3,13 @@ package com.bentaher.youssefbentaher_pset6;
 import java.io.Serializable;
 
 /**
- * Created by mocro on 16/10/2017.
+ * Created by Youssef on 16/10/2017.
+ * Deze modelclass bevat de weerinformatie.
  */
 
 public class Weer implements Serializable{
 
+    //Alle elementen die weerinformatie bevatten.
     public String tijdStip;
     public String algemeen;
     public String temperatuur;
@@ -21,7 +23,9 @@ public class Weer implements Serializable{
     //Standaard constuctor voor FireBase.
     public Weer(){}
 
-    public Weer(String tijdStip, String algemeen, String temperatuur, String luchtDruk, String luchtVochtigHeid, String windSnelheid, String regen){
+    //constructor om alle elemten informatie te verkrijgen.
+    public Weer(String tijdStip, String algemeen, String temperatuur, String luchtDruk,
+                String luchtVochtigHeid, String windSnelheid, String regen){
 
         this.tijdStip = tijdStip;
         this.algemeen = algemeen;
@@ -32,6 +36,7 @@ public class Weer implements Serializable{
         this.regen = regen;
     }
 
+    //Methoden om de weerelementen op te vragen.
     public String getTijdStip(){
         return tijdStip;
     }

@@ -13,22 +13,21 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 /**
- * Created by mocro on 27/09/2017.
+ * Created by Youssef on 27/09/2017.
+ * Adapter object om de WeerdataObject in een listView te zetten.
  */
 
 public class listAdapter extends ArrayAdapter {
     private ArrayList<Weer> weather;
     private Context context;
     private WeatherListActivity listActivity;
-    //DBHelper db;
-
-
 
     public listAdapter(Context context, ArrayList<Weer> data) {
         super(context, 0 , data);
         this.weather = data;
         this.listActivity = (WeatherListActivity) context;
         this.context = context;
+        
 
     }
 
@@ -36,15 +35,13 @@ public class listAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
 
-        //LayoutInflater theInflater = LayoutInflater.from(getContext());
-        //final View theView = theInflater.inflate(R.layout.listlayout, parent, false);
-
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.listlayout, parent, false);
         }
 
-
+        //De verschillende elemten in de Modelclass object worden in Strings geplaatst en
+        //daarna in de views geplaatst.
         final Weer tk = weather.get(position);
         final String tijd = tk.getTijdStip();
         final String alGemeen = tk.getAlgemeen();
@@ -77,52 +74,6 @@ public class listAdapter extends ArrayAdapter {
     public int getCount(){
         return  super.getCount();
     }
-
-    /*
-    class keepCHeck implements View.OnClickListener {
-
-        CheckBox ckBox;
-        Taak tk1;
-        public keepCHeck(CheckBox chBox, Taak tk2){
-             ckBox = chBox;
-            tk1 = tk2;
-        }
-
-        @Override
-        public void onClick(View view) {
-            db.open();
-            if(ckBox.isChecked()){
-                Toast.makeText(context, "het is gecheckt", Toast.LENGTH_SHORT).show();
-                tk1.setIschecked("true");
-                db.update(tk1);
-            }
-            else{
-                Toast.makeText(context, "het is niet gecheckt", Toast.LENGTH_SHORT).show();
-                tk1.setIschecked("false");
-                db.update(tk1);
-            }
-
-        }
-    }
-
-    class goItem implements View.OnClickListener {
-        Taak tk1;
-        public goItem(Taak tk2){
-            tk1 = tk2;
-        }
-
-        @Override
-        public void onClick(View view) {
-            db.open();
-            //Toast.makeText(context, tk1, Toast.LENGTH_SHORT).show();
-            Intent jumppage = new Intent(context, Main2Activity.class);
-            jumppage.putExtra("data", tk1);
-            context.startActivity(jumppage);
-
-        }
-    }
-    */
-
 
 }
 

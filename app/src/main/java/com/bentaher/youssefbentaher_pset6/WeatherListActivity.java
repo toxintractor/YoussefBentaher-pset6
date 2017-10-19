@@ -1,5 +1,10 @@
 package com.bentaher.youssefbentaher_pset6;
 
+/**
+ * Created by Youssef on 21/09/2017.
+ * In deze activity word de listview geplaatst met alle weer informatie van de komende 24uur.
+ */
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,16 +23,14 @@ public class WeatherListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_list);
 
-    weerArray = (ArrayList<Weer>) getIntent().getSerializableExtra("extra");
-
-        for (Weer woeroe: weerArray) {
-            Log.i("doorgegeven: ", woeroe.getTijdStip());
-        }
-
+        //Arraylist word aangemaakt.
+        weerArray = (ArrayList<Weer>) getIntent().getSerializableExtra("extra");
+        //Adapter met de weerinformatie wordt aangeroepen.
         setAdapter();
 
     }
 
+    //Functie om de adapter aan te roepen en te laten zien.
     public  void setAdapter(){
         adapter = new listAdapter(this, weerArray);
         lstView = (ListView) findViewById(R.id.lstView);

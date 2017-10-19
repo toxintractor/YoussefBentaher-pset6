@@ -1,5 +1,11 @@
 package com.bentaher.youssefbentaher_pset6;
 
+/**
+ * Created by Youssef on 21/09/2017.
+ * In de LoginActivity kan men inloggen. Mocht de gebruiker al ingelogd zijn, dan word hij direct
+ * naar de profielpagina gestuurd.
+ */
+
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -62,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    //Deze functie word aangeroepen om de user in te loggen.
     public void loginUser(){
 
         mail = (EditText) findViewById(R.id.mailadres);
@@ -88,8 +95,6 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "inloggen mislukt",
                                     Toast.LENGTH_SHORT).show();
                         }
-
-                        // ...
                     }
                 });
 

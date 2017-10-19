@@ -1,5 +1,11 @@
 package com.bentaher.youssefbentaher_pset6;
 
+/**
+ * Created by Youssef on 21/09/2017.
+ * In deze MainAcitivity kan een nieuwe gebruiker zich registreren of ervoor kiezen om naar de
+ * inlogActivity te gaan om direct in te loggen als hij al een account heeft.
+ */
+
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -114,8 +120,6 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "registeren mislukt",
                                     Toast.LENGTH_SHORT).show();
                         }
-
-                        // ...
                     }
                 });
 
